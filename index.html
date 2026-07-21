@@ -2,1098 +2,2129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casino Hotel Travel Notebook | Hotel Stays, Dining, Entertainment & Planning</title>
-  <meta name="description" content="A detailed casino hotel travel notebook with planning tips, hotel stay guidance, dining research, entertainment notes, guest checklists, FAQ and responsible casino leisure information.">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Luxury Resort & Casino | Rooms, Dining and Entertainment</title>
+
+  <meta
+    name="description"
+    content="Discover a luxury resort and casino experience with stylish rooms, signature dining, nightlife, wellness facilities, events and responsible casino entertainment."
+  >
 
   <style>
+    :root {
+      --black: #080a09;
+      --black-soft: #111512;
+      --green: #123f34;
+      --green-light: #1c5a4a;
+      --ivory: #f5f0e5;
+      --ivory-dark: #e9dfcf;
+      --gold: #c8a35c;
+      --gold-light: #e2c98c;
+      --white: #ffffff;
+      --ink: #202722;
+      --muted: #747c76;
+      --border-light: rgba(32, 39, 34, 0.13);
+      --border-dark: rgba(255, 255, 255, 0.13);
+      --shadow: 0 28px 70px rgba(0, 0, 0, 0.18);
+    }
+
     * {
       box-sizing: border-box;
     }
 
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      background: #eef2f1;
-      color: #20313a;
-      overflow-x: hidden;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--ivory);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
     }
 
     a {
       color: inherit;
+      text-decoration: none;
     }
 
-    .page {
-      width: 100%;
-      min-height: 100vh;
-      background:
-        linear-gradient(90deg, rgba(12, 45, 52, 0.06) 1px, transparent 1px),
-        linear-gradient(rgba(12, 45, 52, 0.06) 1px, transparent 1px),
-        #eef2f1;
-      background-size: 42px 42px;
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
     }
 
-    .side-label {
-      position: fixed;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 58px;
-      background: #18323a;
-      color: #f8d889;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 20;
-      border-right: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .side-label span {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .main {
-      margin-left: 58px;
-      min-height: 100vh;
+    .demo-notice {
+      padding: 9px 16px;
+      background: #020302;
+      color: rgba(255, 255, 255, 0.68);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
     }
 
     .header {
-      padding: 28px 34px;
-      border-bottom: 1px solid rgba(32, 49, 58, 0.12);
-      background: rgba(238, 242, 241, 0.88);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      position: absolute;
+      top: 34px;
+      left: 0;
+      right: 0;
+      z-index: 30;
     }
 
     .header-inner {
-      max-width: 1220px;
+      width: min(1280px, calc(100% - 40px));
+      min-height: 88px;
       margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      gap: 22px;
+      gap: 34px;
+      background: rgba(8, 10, 9, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(16px);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      color: var(--white);
     }
 
-    .brand-badge {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: #f8d889;
-      color: #18323a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 950;
-      box-shadow: 0 10px 24px rgba(32, 49, 58, 0.16);
+    .brand-symbol {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 19px;
     }
 
-    .brand-text strong {
+    .brand-symbol::before,
+    .brand-symbol::after {
+      content: "";
+      position: absolute;
+      background: var(--gold);
+    }
+
+    .brand-symbol::before {
+      width: 70px;
+      height: 1px;
+    }
+
+    .brand-symbol::after {
+      width: 1px;
+      height: 70px;
+    }
+
+    .brand-symbol span {
+      position: relative;
+      z-index: 1;
+      padding: 5px;
+      background: rgba(8, 10, 9, 0.96);
+    }
+
+    .brand-copy strong {
       display: block;
-      color: #18323a;
-      font-size: 18px;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.05;
     }
 
-    .brand-text span {
+    .brand-copy small {
       display: block;
-      color: rgba(32, 49, 58, 0.62);
-      font-size: 12px;
-      font-weight: 800;
-      margin-top: 2px;
+      margin-top: 5px;
+      color: rgba(255, 255, 255, 0.54);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
 
     .nav {
       display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      justify-content: center;
+      gap: 28px;
     }
 
     .nav a {
-      text-decoration: none;
-      background: #ffffff;
-      color: #20313a;
-      border: 1px solid rgba(32, 49, 58, 0.12);
-      border-radius: 999px;
-      padding: 9px 13px;
-      font-size: 12px;
+      position: relative;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 10px;
       font-weight: 900;
-      box-shadow: 0 8px 18px rgba(32, 49, 58, 0.06);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav a::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      width: 0;
+      height: 1px;
+      background: var(--gold-light);
+      transition:
+        left 0.2s ease,
+        width 0.2s ease;
+    }
+
+    .nav a:hover::before {
+      left: 0;
+      width: 100%;
+    }
+
+    .header-cta {
+      min-height: 43px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(226, 201, 140, 0.7);
+      color: var(--gold-light);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .menu-button {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .menu-button span,
+    .menu-button::before,
+    .menu-button::after {
+      content: "";
+      width: 19px;
+      height: 1px;
+      display: block;
+      margin: 5px auto;
+      background: var(--white);
+    }
+
+    .mobile-menu {
+      display: none;
     }
 
     .hero {
-      max-width: 1220px;
-      margin: 0 auto;
-      padding: 62px 34px 34px;
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .hero-copy {
-      background: #ffffff;
-      border-radius: 34px;
-      padding: 48px;
-      border: 1px solid rgba(32, 49, 58, 0.1);
-      box-shadow: 0 24px 60px rgba(32, 49, 58, 0.12);
+      min-height: 950px;
       position: relative;
-      overflow: hidden;
+      display: flex;
+      align-items: center;
+      isolation: isolate;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(5, 7, 6, 0.96) 0%,
+          rgba(5, 7, 6, 0.76) 40%,
+          rgba(5, 7, 6, 0.17) 76%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(5, 7, 6, 0.78),
+          transparent 45%
+        ),
+        url("https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=2200&q=88")
+        center / cover no-repeat;
     }
 
-    .hero-copy::after {
+    .hero::before {
       content: "";
       position: absolute;
-      width: 240px;
-      height: 240px;
-      right: -90px;
-      top: -90px;
-      border-radius: 50%;
-      background: rgba(248, 216, 137, 0.42);
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(
+          circle at 75% 34%,
+          rgba(200, 163, 92, 0.2),
+          transparent 25%
+        );
     }
 
-    .tagline {
-      display: inline-block;
-      position: relative;
-      z-index: 1;
-      background: #18323a;
-      color: #f8d889;
-      border-radius: 999px;
-      padding: 9px 15px;
-      font-size: 12px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+    .deco-left,
+    .deco-right {
+      position: absolute;
+      top: 170px;
+      bottom: 100px;
+      width: 34px;
+      border-top: 1px solid rgba(226, 201, 140, 0.35);
+      border-bottom: 1px solid rgba(226, 201, 140, 0.35);
+    }
+
+    .deco-left {
+      left: 34px;
+      border-left: 1px solid rgba(226, 201, 140, 0.35);
+    }
+
+    .deco-right {
+      right: 34px;
+      border-right: 1px solid rgba(226, 201, 140, 0.35);
+    }
+
+    .hero-inner {
+      width: min(1240px, calc(100% - 44px));
+      margin: 0 auto;
+      padding-top: 120px;
+    }
+
+    .hero-content {
+      max-width: 740px;
+      color: var(--white);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
       margin-bottom: 22px;
+      color: var(--gold-light);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: currentColor;
     }
 
     h1 {
-      position: relative;
-      z-index: 1;
-      margin: 0 0 20px;
-      color: #18323a;
-      font-size: 64px;
-      line-height: 0.96;
-      letter-spacing: -0.07em;
-      max-width: 780px;
+      margin: 0 0 25px;
+      max-width: 760px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(58px, 7.5vw, 105px);
+      line-height: 0.91;
+      font-weight: 400;
+      letter-spacing: -0.06em;
     }
 
-    .hero-intro {
-      position: relative;
-      z-index: 1;
-      max-width: 780px;
+    .hero-text {
+      max-width: 650px;
       margin: 0;
-      color: rgba(32, 49, 58, 0.74);
-      font-size: 19px;
-      line-height: 1.72;
+      color: rgba(255, 255, 255, 0.73);
+      font-size: 18px;
+      line-height: 1.78;
     }
 
-    .hero-buttons {
-      position: relative;
-      z-index: 1;
+    .hero-actions {
+      margin-top: 35px;
       display: flex;
-      gap: 12px;
       flex-wrap: wrap;
-      margin-top: 30px;
+      gap: 12px;
     }
 
-    .primary-link,
-    .secondary-link {
-      display: inline-block;
-      text-decoration: none;
-      border-radius: 16px;
-      padding: 14px 20px;
-      font-size: 14px;
-      font-weight: 950;
+    .button {
+      min-height: 50px;
+      padding: 0 23px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
     }
 
-    .primary-link {
-      background: #18323a;
-      color: #ffffff;
-      box-shadow: 0 14px 26px rgba(24, 50, 58, 0.24);
+    .button:hover {
+      transform: translateY(-2px);
     }
 
-    .secondary-link {
-      background: #eef2f1;
-      color: #18323a;
-      border: 1px solid rgba(32, 49, 58, 0.12);
+    .button-gold {
+      background: var(--gold);
+      color: var(--black);
     }
 
-    .hero-stack {
-      display: grid;
-      gap: 16px;
+    .button-outline {
+      border-color: rgba(255, 255, 255, 0.36);
+      color: var(--white);
     }
 
-    .mini-panel {
-      border-radius: 26px;
-      padding: 24px;
-      background: #18323a;
-      color: #ffffff;
-      box-shadow: 0 18px 42px rgba(32, 49, 58, 0.16);
+    .hero-card {
+      position: absolute;
+      right: max(44px, calc((100vw - 1240px) / 2));
+      bottom: 80px;
+      width: 340px;
+      padding: 27px;
+      background: rgba(8, 10, 9, 0.73);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(18px);
+      color: var(--white);
+    }
+
+    .hero-card small {
+      display: block;
+      color: var(--gold-light);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hero-card strong {
+      display: block;
+      margin-top: 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+      line-height: 1.1;
+      font-weight: 400;
+    }
+
+    .hero-card p {
+      margin: 10px 0 0;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .reservation-bar {
       position: relative;
-      overflow: hidden;
+      z-index: 6;
+      width: min(1140px, calc(100% - 42px));
+      margin: -55px auto 0;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 13px;
+      align-items: end;
+      background: var(--white);
+      box-shadow: var(--shadow);
     }
 
-    .mini-panel.gold {
-      background: #f8d889;
-      color: #18323a;
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: #7a817d;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
     }
 
-    .mini-panel.photo {
-      min-height: 210px;
+    .field input,
+    .field select {
+      width: 100%;
+      height: 49px;
+      padding: 0 13px;
+      border: 1px solid #d7dcd8;
+      border-radius: 0;
+      outline: none;
+      background: #fcfbf7;
+      color: var(--ink);
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--gold);
+    }
+
+    .section {
+      padding: 110px 22px;
+    }
+
+    .section-ivory {
+      background: var(--ivory);
+    }
+
+    .section-white {
+      background: var(--white);
+    }
+
+    .section-black {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .section-green {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .container {
+      width: min(1240px, 100%);
+      margin: 0 auto;
+    }
+
+    .heading {
+      max-width: 780px;
+      margin-bottom: 44px;
+    }
+
+    .heading.center {
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #9a7538;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section-black .section-label,
+    .section-green .section-label {
+      color: var(--gold-light);
+    }
+
+    .heading h2 {
+      margin: 0 0 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(43px, 5.2vw, 68px);
+      line-height: 0.98;
+      font-weight: 400;
+      letter-spacing: -0.05em;
+    }
+
+    .heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .section-black .heading p,
+    .section-green .heading p {
+      color: rgba(255, 255, 255, 0.67);
+    }
+
+    .arrival-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 75px;
+      align-items: center;
+    }
+
+    .arrival-image {
+      min-height: 670px;
+      position: relative;
       background:
-        linear-gradient(rgba(24, 50, 58, 0.18), rgba(24, 50, 58, 0.68)),
-        url("https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=900&q=80");
-      background-size: cover;
-      background-position: center;
+        linear-gradient(
+          rgba(8, 10, 9, 0.03),
+          rgba(8, 10, 9, 0.28)
+        ),
+        url("https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1500&q=86")
+        center / cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .arrival-image::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.46);
+    }
+
+    .arrival-copy h2 {
+      margin: 0 0 24px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 5.4vw, 71px);
+      line-height: 0.97;
+      font-weight: 400;
+      letter-spacing: -0.055em;
+    }
+
+    .arrival-copy p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.78;
+    }
+
+    .signature-list {
+      margin: 29px 0 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px 24px;
+      list-style: none;
+    }
+
+    .signature-list li {
+      position: relative;
+      padding: 14px 0 14px 23px;
+      border-top: 1px solid var(--border-light);
+      color: #44504a;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .signature-list li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 9px;
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+    }
+
+    .room-main {
+      min-height: 680px;
+      position: relative;
       display: flex;
       align-items: flex-end;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          to top,
+          rgba(8, 10, 9, 0.93),
+          transparent 64%
+        ),
+        url("https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1500&q=86")
+        center / cover no-repeat;
     }
 
-    .mini-panel strong {
-      display: block;
-      font-size: 23px;
-      line-height: 1.08;
-      letter-spacing: -0.04em;
-      margin-bottom: 8px;
+    .room-main-copy {
+      padding: 38px;
+      color: var(--white);
     }
 
-    .mini-panel span {
-      display: block;
-      color: inherit;
-      opacity: 0.78;
+    .room-main-copy small,
+    .room-card-copy small {
+      color: var(--gold-light);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .room-main-copy h3 {
+      margin: 8px 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 40px;
+      line-height: 1.05;
+      font-weight: 400;
+    }
+
+    .room-main-copy p {
+      max-width: 600px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.7);
       font-size: 14px;
-      line-height: 1.45;
+      line-height: 1.7;
     }
 
-    .stats {
-      max-width: 1220px;
-      margin: 0 auto;
-      padding: 0 34px 38px;
+    .room-side {
+      display: grid;
+      gap: 22px;
+    }
+
+    .room-card {
+      min-height: 329px;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      background: var(--white);
+      box-shadow: 0 16px 42px rgba(32, 39, 34, 0.08);
+    }
+
+    .room-card-image {
+      background-position: center;
+      background-size: cover;
+    }
+
+    .room-card:nth-child(1) .room-card-image {
+      background-image:
+        url("https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=900&q=86");
+    }
+
+    .room-card:nth-child(2) .room-card-image {
+      background-image:
+        url("https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=86");
+    }
+
+    .room-card-copy {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .room-card-copy h3 {
+      margin: 8px 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      line-height: 1.05;
+      font-weight: 400;
+    }
+
+    .room-card-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .casino-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 75px;
+      align-items: center;
+    }
+
+    .casino-copy h2 {
+      margin: 0 0 23px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(48px, 6vw, 80px);
+      line-height: 0.94;
+      font-weight: 400;
+      letter-spacing: -0.058em;
+    }
+
+    .casino-copy p {
+      margin: 0 0 18px;
+      color: rgba(255, 255, 255, 0.67);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .casino-stats {
+      margin-top: 31px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 13px;
+    }
+
+    .casino-stat {
+      padding: 20px;
+      border: 1px solid var(--border-dark);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .casino-stat strong {
+      display: block;
+      color: var(--gold-light);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .casino-stat span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255, 255, 255, 0.52);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .casino-image {
+      min-height: 720px;
+      position: relative;
+      background:
+        linear-gradient(
+          rgba(8, 10, 9, 0.03),
+          rgba(8, 10, 9, 0.38)
+        ),
+        url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1500&q=86")
+        center / cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .casino-image::after {
+      content: "18+";
+      position: absolute;
+      right: 25px;
+      bottom: 25px;
+      width: 66px;
+      height: 66px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(226, 201, 140, 0.75);
+      color: var(--gold-light);
+      background: rgba(8, 10, 9, 0.74);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+    }
+
+    .dining-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      grid-template-rows: 330px 330px;
+      gap: 15px;
+    }
+
+    .dining-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 27px;
+      color: var(--white);
+      background-position: center;
+      background-size: cover;
+    }
+
+    .dining-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(5, 7, 6, 0.92),
+        rgba(5, 7, 6, 0.05) 68%
+      );
+    }
+
+    .dining-card.large {
+      grid-row: 1 / 3;
+      background-image:
+        url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=86");
+    }
+
+    .dining-card.lounge {
+      background-image:
+        url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=86");
+    }
+
+    .dining-card.casual {
+      background-image:
+        url("https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1000&q=86");
+    }
+
+    .dining-card.events {
+      grid-column: 2 / 4;
+      background-image:
+        url("https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=1500&q=86");
+    }
+
+    .dining-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .dining-copy small {
+      color: var(--gold-light);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .dining-copy h3 {
+      margin: 8px 0 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      line-height: 1.05;
+      font-weight: 400;
+    }
+
+    .dining-copy p {
+      max-width: 470px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .pool-layout {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 75px;
+      align-items: center;
+    }
+
+    .pool-image {
+      min-height: 650px;
+      background:
+        linear-gradient(
+          rgba(8, 10, 9, 0.02),
+          rgba(8, 10, 9, 0.23)
+        ),
+        url("https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1500&q=86")
+        center / cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .pool-copy h2 {
+      margin: 0 0 23px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(46px, 6vw, 75px);
+      line-height: 0.96;
+      font-weight: 400;
+      letter-spacing: -0.055em;
+    }
+
+    .pool-copy p {
+      margin: 0 0 18px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .amenities-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
     }
 
-    .stat {
-      background: rgba(255, 255, 255, 0.74);
-      border: 1px solid rgba(32, 49, 58, 0.1);
-      border-radius: 24px;
-      padding: 22px;
+    .amenity {
+      min-height: 205px;
+      padding: 26px;
+      border: 1px solid var(--border-light);
+      background: rgba(255, 255, 255, 0.52);
     }
 
-    .stat small {
-      display: block;
-      color: #a36f19;
-      font-weight: 950;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      margin-bottom: 8px;
+    .amenity-number {
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 29px;
     }
 
-    .stat strong {
-      display: block;
-      color: #18323a;
-      font-size: 21px;
-      line-height: 1.16;
-      margin-bottom: 8px;
+    .amenity h3 {
+      margin: 24px 0 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 23px;
+      font-weight: 400;
     }
 
-    .stat span {
-      display: block;
-      color: rgba(32, 49, 58, 0.66);
-      font-size: 14px;
-      line-height: 1.48;
-    }
-
-    .section {
-      padding: 64px 34px;
-    }
-
-    .section.white {
-      background: #ffffff;
-      border-top: 1px solid rgba(32, 49, 58, 0.1);
-      border-bottom: 1px solid rgba(32, 49, 58, 0.1);
-    }
-
-    .container {
-      max-width: 1220px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      max-width: 880px;
-      margin-bottom: 30px;
-    }
-
-    .label {
-      display: inline-block;
-      color: #a36f19;
-      font-size: 12px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      margin: 0 0 12px;
-      color: #18323a;
-      font-size: 43px;
-      line-height: 1.08;
-      letter-spacing: -0.05em;
-    }
-
-    .section-title p {
-      color: rgba(32, 49, 58, 0.72);
-      font-size: 17px;
-      line-height: 1.72;
+    .amenity p {
       margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
     }
 
-    .notebook-grid {
+    .contact-layout {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 75px;
       align-items: start;
     }
 
-    .notebook-main,
-    .notebook-side {
-      display: grid;
-      gap: 18px;
+    .contact-copy h2 {
+      margin: 0 0 22px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(46px, 6vw, 73px);
+      line-height: 0.95;
+      font-weight: 400;
+      letter-spacing: -0.055em;
     }
 
-    .note-card {
-      background: #eef2f1;
-      border: 1px solid rgba(32, 49, 58, 0.1);
-      border-radius: 26px;
-      padding: 26px;
-    }
-
-    .note-card.dark {
-      background: #18323a;
-      color: #ffffff;
-    }
-
-    .note-card h3 {
-      margin: 0 0 10px;
-      color: inherit;
-      font-size: 27px;
-      line-height: 1.14;
-      letter-spacing: -0.04em;
-    }
-
-    .note-card p {
-      margin: 0 0 14px;
-      color: rgba(32, 49, 58, 0.72);
+    .contact-copy p {
+      margin: 0 0 17px;
+      color: var(--muted);
       font-size: 16px;
-      line-height: 1.72;
+      line-height: 1.75;
     }
 
-    .note-card.dark p {
-      color: rgba(255, 255, 255, 0.78);
+    .contact-note {
+      margin-top: 26px;
+      padding: 18px;
+      border-left: 3px solid var(--gold);
+      background: var(--ivory-dark);
+      color: #5e6862;
+      font-size: 13px;
     }
 
-    .note-card p:last-child {
-      margin-bottom: 0;
+    .contact-form {
+      padding: 34px;
+      background: var(--white);
+      box-shadow: var(--shadow);
     }
 
-    .table-wrap {
-      overflow-x: auto;
-      border-radius: 24px;
-      border: 1px solid rgba(32, 49, 58, 0.1);
-      background: #ffffff;
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 760px;
+    .form-group.full {
+      grid-column: 1 / -1;
     }
 
-    th,
-    td {
-      padding: 16px;
-      text-align: left;
-      border-bottom: 1px solid rgba(32, 49, 58, 0.08);
-      vertical-align: top;
-    }
-
-    th {
-      background: #18323a;
-      color: #f8d889;
-      font-size: 12px;
-      letter-spacing: 0.06em;
+    .form-group label {
+      display: block;
+      margin-bottom: 7px;
+      color: #7a817d;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
     }
 
-    td {
-      color: rgba(32, 49, 58, 0.74);
-      font-size: 14px;
-      line-height: 1.55;
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid #d7dcd8;
+      border-radius: 0;
+      outline: none;
+      background: #fcfbf7;
+      color: var(--ink);
     }
 
-    tr:last-child td {
-      border-bottom: none;
+    .form-group input,
+    .form-group select {
+      height: 49px;
+      padding: 0 13px;
     }
 
-    .timeline {
+    .form-group textarea {
+      min-height: 135px;
+      padding: 13px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-message {
+      min-height: 20px;
+      margin-top: 13px;
+      color: var(--green-light);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .responsible {
+      padding: 50px 22px;
+      background: #0f1411;
+      color: rgba(255, 255, 255, 0.66);
+    }
+
+    .responsible-inner {
+      width: min(1240px, 100%);
+      margin: 0 auto;
       display: grid;
-      gap: 14px;
-    }
-
-    .timeline-row {
-      display: grid;
-      grid-template-columns: 86px 1fr;
-      gap: 16px;
-      background: #ffffff;
-      border: 1px solid rgba(32, 49, 58, 0.1);
-      border-radius: 22px;
-      padding: 18px;
-    }
-
-    .time {
-      background: #f8d889;
-      color: #18323a;
-      border-radius: 16px;
-      display: flex;
+      grid-template-columns: 78px 1fr;
+      gap: 27px;
       align-items: center;
-      justify-content: center;
-      font-weight: 950;
-      text-align: center;
-      min-height: 54px;
     }
 
-    .timeline-row strong {
-      display: block;
-      color: #18323a;
-      font-size: 17px;
-      margin-bottom: 5px;
-    }
-
-    .timeline-row span {
-      display: block;
-      color: rgba(32, 49, 58, 0.68);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .checklist-grid {
+    .responsible-mark {
+      width: 78px;
+      height: 78px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      place-items: center;
+      border: 1px solid rgba(226, 201, 140, 0.55);
+      color: var(--gold-light);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 23px;
     }
 
-    .check-card {
-      background: #ffffff;
-      border: 1px solid rgba(32, 49, 58, 0.1);
-      border-radius: 26px;
-      padding: 24px;
-      box-shadow: 0 14px 32px rgba(32, 49, 58, 0.07);
+    .responsible h2 {
+      margin: 0 0 7px;
+      color: var(--white);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      font-weight: 400;
     }
 
-    .check-card b {
-      display: inline-flex;
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      background: #18323a;
-      color: #f8d889;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
-
-    .check-card strong {
-      display: block;
-      color: #18323a;
-      font-size: 18px;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-
-    .check-card span {
-      display: block;
-      color: rgba(32, 49, 58, 0.68);
-      font-size: 14px;
-      line-height: 1.52;
-    }
-
-    .faq {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .faq-item {
-      background: #eef2f1;
-      border-radius: 22px;
-      padding: 22px;
-      border: 1px solid rgba(32, 49, 58, 0.09);
-    }
-
-    .faq-item h3 {
-      margin: 0 0 8px;
-      color: #18323a;
-      font-size: 19px;
-      line-height: 1.2;
-    }
-
-    .faq-item p {
+    .responsible p {
       margin: 0;
-      color: rgba(32, 49, 58, 0.7);
-      font-size: 15px;
-      line-height: 1.62;
-    }
-
-    .final-panel {
-      background:
-        linear-gradient(135deg, #18323a, #244a53);
-      color: #ffffff;
-      border-radius: 34px;
-      padding: 34px;
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 26px;
-      align-items: center;
-      box-shadow: 0 22px 48px rgba(32, 49, 58, 0.22);
-    }
-
-    .final-panel h2 {
-      color: #ffffff;
-      margin-bottom: 0;
-    }
-
-    .final-panel p {
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 16px;
-      line-height: 1.72;
-      margin: 0 0 14px;
+      font-size: 13px;
+      line-height: 1.7;
     }
 
     .footer {
-      margin-left: 58px;
-      background: #13282f;
-      color: rgba(255, 255, 255, 0.72);
-      padding: 28px 34px;
-      font-size: 13px;
-      line-height: 1.55;
+      padding: 68px 22px 27px;
+      background: #040605;
+      color: rgba(255, 255, 255, 0.57);
     }
 
-    .footer-inner {
-      max-width: 1220px;
+    .footer-grid {
+      width: min(1240px, 100%);
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr repeat(3, 1fr);
+      gap: 50px;
+    }
+
+    .footer-brand h3 {
+      margin: 0 0 13px;
+      color: var(--white);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .footer-brand p {
+      max-width: 370px;
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .footer-column h4 {
+      margin: 0 0 15px;
+      color: var(--gold-light);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .footer-column a,
+    .footer-column span {
+      display: block;
+      margin: 9px 0;
+      font-size: 13px;
+    }
+
+    .footer-bottom {
+      width: min(1240px, 100%);
+      margin: 47px auto 0;
+      padding-top: 22px;
       display: flex;
       justify-content: space-between;
-      gap: 18px;
+      gap: 20px;
       flex-wrap: wrap;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 11px;
     }
 
-    @media (max-width: 1020px) {
-      .side-label {
+    @media (max-width: 1080px) {
+      .nav,
+      .header-cta {
         display: none;
       }
 
-      .main,
-      .footer {
-        margin-left: 0;
-      }
-
-      .hero,
-      .notebook-grid,
-      .final-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-stack {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .mini-panel.photo {
-        min-height: 190px;
-      }
-
-      .stats,
-      .checklist-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .faq {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 48px;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .header {
-        padding: 18px 14px;
-      }
-
       .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
+        grid-template-columns: 1fr auto;
       }
 
-      .nav {
-        justify-content: flex-start;
+      .menu-button {
+        display: block;
       }
 
-      .hero {
-        padding: 36px 14px 24px;
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 25;
+        padding: 135px 28px 35px;
+        background: rgba(4, 6, 5, 0.98);
       }
 
-      .hero-copy {
-        padding: 28px 22px;
-        border-radius: 26px;
+      .mobile-menu.open {
+        display: block;
       }
 
-      h1 {
-        font-size: 35px;
-      }
-
-      .hero-intro {
-        font-size: 16px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-      }
-
-      .primary-link,
-      .secondary-link {
-        width: 100%;
-        text-align: center;
-      }
-
-      .hero-stack {
-        grid-template-columns: 1fr;
-      }
-
-      .stats,
-      .checklist-grid {
-        grid-template-columns: 1fr;
-        padding-left: 14px;
-        padding-right: 14px;
-      }
-
-      .section {
-        padding: 44px 14px;
-      }
-
-      h2 {
+      .mobile-menu a {
+        display: block;
+        padding: 17px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        color: var(--white);
+        font-family: Georgia, "Times New Roman", serif;
         font-size: 29px;
       }
 
-      .timeline-row {
+      .hero-card {
+        display: none;
+      }
+
+      .reservation-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reservation-bar .button {
+        grid-column: 1 / -1;
+      }
+
+      .arrival-layout,
+      .casino-layout,
+      .pool-layout,
+      .contact-layout {
         grid-template-columns: 1fr;
       }
 
-      .final-panel {
-        padding: 24px 20px;
-        border-radius: 26px;
+      .rooms-grid {
+        grid-template-columns: 1fr;
       }
 
-      .footer {
-        padding: 24px 14px;
+      .room-side {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .room-card {
+        grid-template-columns: 1fr;
+      }
+
+      .room-card-image {
+        min-height: 260px;
+      }
+
+      .dining-layout {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 360px 300px 300px;
+      }
+
+      .dining-card.large {
+        grid-column: 1 / 3;
+        grid-row: auto;
+      }
+
+      .dining-card.events {
+        grid-column: 1 / 3;
+      }
+
+      .amenities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr;
+      }
+
+      .footer-column:last-child {
+        grid-column: 2 / 4;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .demo-notice {
+        font-size: 9px;
+      }
+
+      .header {
+        top: 30px;
+      }
+
+      .header-inner {
+        width: calc(100% - 28px);
+        min-height: 72px;
+        padding: 0 16px;
+      }
+
+      .brand-symbol {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-symbol::before {
+        width: 54px;
+      }
+
+      .brand-symbol::after {
+        height: 54px;
+      }
+
+      .brand-copy strong {
+        font-size: 16px;
+      }
+
+      .brand-copy small {
+        display: none;
+      }
+
+      .hero {
+        min-height: 820px;
+        align-items: flex-end;
+        background:
+          linear-gradient(
+            0deg,
+            rgba(5, 7, 6, 0.97) 0%,
+            rgba(5, 7, 6, 0.7) 57%,
+            rgba(5, 7, 6, 0.14) 100%
+          ),
+          url("https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1300&q=86")
+          center / cover no-repeat;
+      }
+
+      .deco-left,
+      .deco-right {
+        display: none;
+      }
+
+      .hero-inner {
+        width: calc(100% - 28px);
+        padding: 170px 0 92px;
+      }
+
+      h1 {
+        font-size: 49px;
+      }
+
+      .hero-text {
+        font-size: 16px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .reservation-bar {
+        width: calc(100% - 28px);
+        margin-top: -42px;
+        grid-template-columns: 1fr;
+      }
+
+      .reservation-bar .button {
+        grid-column: auto;
+      }
+
+      .section {
+        padding: 75px 14px;
+      }
+
+      .arrival-image,
+      .casino-image,
+      .pool-image {
+        min-height: 420px;
+      }
+
+      .signature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .room-main {
+        min-height: 520px;
+      }
+
+      .room-side {
+        grid-template-columns: 1fr;
+      }
+
+      .casino-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .dining-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 350px);
+      }
+
+      .dining-card.large,
+      .dining-card.events {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .amenities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .contact-form {
+        padding: 22px;
+      }
+
+      .responsible-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / 3;
+      }
+
+      .footer-column:last-child {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 470px) {
+      h1 {
+        font-size: 42px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: auto;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="side-label">
-    <span>Casino Hotel Travel Notebook</span>
+  <div class="demo-notice">
+    Fictional resort concept — replace placeholders with verified property details before publishing.
   </div>
 
-  <div class="page">
-    <div class="main">
-      <header class="header">
-        <div class="header-inner">
-          <div class="brand">
-            <div class="brand-badge">CH</div>
-            <div class="brand-text">
-              <strong>Casino Hotel Notebook</strong>
-              <span>Independent-style travel planning resource</span>
-            </div>
-          </div>
-
-          <nav class="nav">
-            <a href="#research">Research</a>
-            <a href="#compare">Compare</a>
-            <a href="#itinerary">Itinerary</a>
-            <a href="#checklist">Checklist</a>
-            <a href="#questions">Questions</a>
-          </nav>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="#home">
+        <div class="brand-symbol">
+          <span>R&amp;C</span>
         </div>
-      </header>
 
-      <main>
-        <section class="hero">
-          <div class="hero-copy">
-            <div class="tagline">Hotel Casino Research Guide</div>
+        <div class="brand-copy">
+          <strong>The Resort &amp; Casino</strong>
+          <small>Stay · Dine · Play · Celebrate</small>
+        </div>
+      </a>
 
-            <h1>A travel notebook for comparing casino hotel stays</h1>
+      <nav class="nav">
+        <a href="#rooms">Rooms</a>
+        <a href="#casino">Casino</a>
+        <a href="#dining">Dining</a>
+        <a href="#leisure">Leisure</a>
+        <a href="#events">Events</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-            <p class="hero-intro">
-              This site is built as a practical research guide for visitors comparing hotel casino properties. It focuses on the full guest experience: accommodation, location, dining, entertainment, casino access, travel planning, safety questions, booking terms and responsible leisure.
-            </p>
+      <a class="header-cta" href="#contact">
+        Request a Stay
+      </a>
 
-            <div class="hero-buttons">
-              <a class="primary-link" href="#research">Start Reading</a>
-              <a class="secondary-link" href="#checklist">Open Checklist</a>
-            </div>
-          </div>
-
-          <div class="hero-stack">
-            <div class="mini-panel gold">
-              <strong>Research before booking</strong>
-              <span>Compare rooms, costs, transport, services, dining and official requirements.</span>
-            </div>
-
-            <div class="mini-panel photo">
-              <div>
-                <strong>Think beyond the room</strong>
-                <span>Hotel casinos often combine food, events, lounges and adult leisure.</span>
-              </div>
-            </div>
-
-            <div class="mini-panel">
-              <strong>Use responsible limits</strong>
-              <span>Casino entertainment should only be treated as optional adult leisure.</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="stats">
-          <div class="stat">
-            <small>Stay</small>
-            <strong>Room comfort</strong>
-            <span>Review room types, amenities, check-in rules, accessibility and booking terms.</span>
-          </div>
-
-          <div class="stat">
-            <small>Eat</small>
-            <strong>Dining options</strong>
-            <span>Check restaurant hours, reservations, lounge areas and casual food options.</span>
-          </div>
-
-          <div class="stat">
-            <small>Visit</small>
-            <strong>Entertainment</strong>
-            <span>Look for events, bars, lounges, live shows and on-property leisure spaces.</span>
-          </div>
-
-          <div class="stat">
-            <small>Play</small>
-            <strong>Casino access</strong>
-            <span>Confirm legal age, ID requirements, opening hours and responsible play details.</span>
-          </div>
-        </section>
-
-        <section class="section white" id="research">
-          <div class="container">
-            <div class="section-title">
-              <span class="label">Research Notes</span>
-              <h2>What a useful casino hotel page should help visitors understand</h2>
-              <p>
-                A casino hotel is not just a room and not just a gaming floor. It is a hospitality property where several parts of a trip may connect: accommodation, dining, entertainment, guest services, local travel and responsible casino leisure. A visitor should be able to understand what to check, what to compare and what questions to ask before making any booking decision.
-              </p>
-            </div>
-
-            <div class="notebook-grid">
-              <div class="notebook-main">
-                <article class="note-card">
-                  <h3>Accommodation research</h3>
-                  <p>
-                    The first part of a hotel casino decision should be the hotel itself. Guests should look at room types, cleanliness expectations, check-in and check-out times, parking, accessibility, fees, deposit rules, cancellation policy and whether the property fits the purpose of the trip.
-                  </p>
-                  <p>
-                    A weekend visitor may want a comfortable room close to dining and entertainment. A road-trip traveller may care more about parking, location and flexible arrival times. A guest attending an event may care about schedules and distance from the venue area.
-                  </p>
-                </article>
-
-                <article class="note-card">
-                  <h3>Casino entertainment context</h3>
-                  <p>
-                    Casino entertainment should be understood as one optional part of the property. It is intended for eligible adults only and should be approached as leisure, not as a financial plan. Guests should check legal age requirements, identification rules, local restrictions and property policies before participating.
-                  </p>
-                </article>
-              </div>
-
-              <div class="notebook-side">
-                <article class="note-card dark">
-                  <h3>Original planning value</h3>
-                  <p>
-                    A useful page should give visitors practical guidance that helps them make decisions, not only repeat short promotional claims. The information should explain how to plan, what to verify and how to compare the experience responsibly.
-                  </p>
-                </article>
-
-                <article class="note-card">
-                  <h3>Dining and services</h3>
-                  <p>
-                    Restaurants, lounges, bars, event spaces and guest services can shape the visit as much as the casino area. Visitors should check opening hours, reservation needs, menus, event calendars and whether services are available during their planned stay.
-                  </p>
-                </article>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="compare">
-          <div class="container">
-            <div class="section-title">
-              <span class="label">Comparison Framework</span>
-              <h2>Casino hotel comparison table</h2>
-              <p>
-                The table below gives visitors a practical way to compare hotel casino properties without focusing only on one feature. Each area affects the quality of the overall stay.
-              </p>
-            </div>
-
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Area to Review</th>
-                    <th>Why It Matters</th>
-                    <th>What to Check</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Hotel rooms</td>
-                    <td>The room is the base of the trip and affects comfort, sleep quality and convenience.</td>
-                    <td>Room type, amenities, accessibility, photos, check-in rules, deposits and cancellation terms.</td>
-                  </tr>
-                  <tr>
-                    <td>Location</td>
-                    <td>Distance and transport can affect the cost and practicality of the visit.</td>
-                    <td>Driving routes, parking, airport access, local transport, taxis and nearby attractions.</td>
-                  </tr>
-                  <tr>
-                    <td>Dining</td>
-                    <td>Food availability matters for overnight stays, late arrivals and group visits.</td>
-                    <td>Restaurant hours, reservation rules, casual options, bars, lounges and menus.</td>
-                  </tr>
-                  <tr>
-                    <td>Entertainment</td>
-                    <td>Events and social spaces can make the property more useful beyond accommodation.</td>
-                    <td>Event calendars, live entertainment, lounges, seasonal schedules and venue policies.</td>
-                  </tr>
-                  <tr>
-                    <td>Casino access</td>
-                    <td>Casino leisure is regulated and should only be used by eligible adults.</td>
-                    <td>Age rules, identification, local requirements, responsible play information and opening hours.</td>
-                  </tr>
-                  <tr>
-                    <td>Guest support</td>
-                    <td>Clear service information helps reduce uncertainty during the stay.</td>
-                    <td>Reception hours, contact options, accessibility support, payment methods and property rules.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        <section class="section white" id="itinerary">
-          <div class="container">
-            <div class="section-title">
-              <span class="label">Sample Itinerary</span>
-              <h2>A balanced overnight casino hotel visit</h2>
-              <p>
-                This sample itinerary shows how a visitor might use a hotel casino property as a broader hospitality destination rather than making casino activity the only focus.
-              </p>
-            </div>
-
-            <div class="timeline">
-              <div class="timeline-row">
-                <div class="time">Before</div>
-                <div>
-                  <strong>Confirm details before travelling</strong>
-                  <span>Check room booking, arrival time, transport, restaurant availability, event schedule, local rules and casino access requirements through official sources.</span>
-                </div>
-              </div>
-
-              <div class="timeline-row">
-                <div class="time">Arrival</div>
-                <div>
-                  <strong>Check in and review property information</strong>
-                  <span>Confirm room details, guest services, dining hours, parking rules, property map and any entertainment schedule for the day.</span>
-                </div>
-              </div>
-
-              <div class="timeline-row">
-                <div class="time">Evening</div>
-                <div>
-                  <strong>Use dining and entertainment options</strong>
-                  <span>Plan dinner, social time, lounge visits, events or casino leisure according to personal preference, eligibility and responsible limits.</span>
-                </div>
-              </div>
-
-              <div class="timeline-row">
-                <div class="time">Next Day</div>
-                <div>
-                  <strong>Review checkout and onward travel</strong>
-                  <span>Check final charges, checkout time, transport arrangements and nearby attractions before leaving the property.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="checklist">
-          <div class="container">
-            <div class="section-title">
-              <span class="label">Visitor Checklist</span>
-              <h2>Questions to answer before choosing a casino hotel</h2>
-            </div>
-
-            <div class="checklist-grid">
-              <div class="check-card">
-                <b>1</b>
-                <strong>What is the purpose of the visit?</strong>
-                <span>Overnight stay, road trip, dining, event, leisure break, business stop or casino entertainment.</span>
-              </div>
-
-              <div class="check-card">
-                <b>2</b>
-                <strong>Is the hotel suitable?</strong>
-                <span>Room type, cleanliness, accessibility, check-in time, parking and guest service availability.</span>
-              </div>
-
-              <div class="check-card">
-                <b>3</b>
-                <strong>Are all costs clear?</strong>
-                <span>Room rate, taxes, fees, deposits, cancellation terms, transport costs and payment rules.</span>
-              </div>
-
-              <div class="check-card">
-                <b>4</b>
-                <strong>Is dining available?</strong>
-                <span>Restaurants, opening hours, reservations, casual food, bars and late-night options.</span>
-              </div>
-
-              <div class="check-card">
-                <b>5</b>
-                <strong>What rules apply?</strong>
-                <span>Legal age, ID requirements, casino access, local regulations and property policies.</span>
-              </div>
-
-              <div class="check-card">
-                <b>6</b>
-                <strong>What are the personal limits?</strong>
-                <span>Time limits, spending limits and responsible casino leisure expectations before visiting.</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section white" id="questions">
-          <div class="container">
-            <div class="section-title">
-              <span class="label">FAQ</span>
-              <h2>Common casino hotel research questions</h2>
-            </div>
-
-            <div class="faq">
-              <div class="faq-item">
-                <h3>Is a hotel casino only for casino visitors?</h3>
-                <p>
-                  No. Many visitors may use the hotel, dining, event spaces, bars, lounges or location without making casino entertainment the main reason for the stay.
-                </p>
-              </div>
-
-              <div class="faq-item">
-                <h3>What should be checked before booking?</h3>
-                <p>
-                  Visitors should confirm room details, booking terms, current prices, cancellation rules, restaurant hours, event schedules, transport options and casino access requirements.
-                </p>
-              </div>
-
-              <div class="faq-item">
-                <h3>Can casino access rules change?</h3>
-                <p>
-                  Yes. Local regulations, age requirements, identification rules, opening hours and property policies can change, so official sources should be checked before visiting.
-                </p>
-              </div>
-
-              <div class="faq-item">
-                <h3>How should casino leisure be approached?</h3>
-                <p>
-                  Casino entertainment should be treated as optional adult leisure only. It should never be considered a guaranteed way to make money or recover costs.
-                </p>
-              </div>
-
-              <div class="faq-item">
-                <h3>Why compare dining and events?</h3>
-                <p>
-                  Dining, lounges and events can make the stay more convenient and enjoyable, especially for guests who want a complete leisure visit rather than only a room.
-                </p>
-              </div>
-
-              <div class="faq-item">
-                <h3>Why use official property sources?</h3>
-                <p>
-                  Official sources are the best place to confirm current availability, rules, pricing, schedules, booking terms and guest requirements before making a decision.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="container">
-            <div class="final-panel">
-              <h2>Responsible leisure and practical planning</h2>
-
-              <div>
-                <p>
-                  Casino entertainment is intended only for eligible adults and should always be approached responsibly. Visitors should set limits, follow local laws, check identification rules and treat casino activity as leisure only.
-                </p>
-
-                <p>
-                  This website provides general informational content about hotel casino research and travel planning. It does not guarantee availability, prices, promotions, financial outcomes, winnings or any specific guest experience. Current details should always be confirmed through official property sources.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+      <button
+        class="menu-button"
+        id="menuButton"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+      >
+        <span></span>
+      </button>
     </div>
-  </div>
+  </header>
+
+  <nav
+    class="mobile-menu"
+    id="mobileMenu"
+    aria-label="Mobile navigation"
+  >
+    <a href="#rooms">Rooms</a>
+    <a href="#casino">Casino</a>
+    <a href="#dining">Dining</a>
+    <a href="#leisure">Leisure</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="deco-left"></div>
+      <div class="deco-right"></div>
+
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="eyebrow">
+            A complete resort destination
+          </div>
+
+          <h1>Stay where the night comes alive</h1>
+
+          <p class="hero-text">
+            Step into a resort experience shaped by elegant rooms, destination
+            dining, vibrant nightlife, relaxing leisure spaces and responsible
+            casino entertainment for eligible adult guests.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-gold" href="#rooms">
+              Discover the Rooms
+            </a>
+
+            <a class="button button-outline" href="#dining">
+              Explore the Resort
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <small>Tonight at the resort</small>
+
+        <strong>Dining, cocktails and entertainment in one destination</strong>
+
+        <p>
+          Opening hours, reservations and event schedules should be confirmed
+          directly with the property before arrival.
+        </p>
+      </aside>
+    </section>
+
+    <form class="reservation-bar" id="reservationForm">
+      <div class="field">
+        <label for="arrival">Arrival</label>
+        <input id="arrival" name="arrival" type="date">
+      </div>
+
+      <div class="field">
+        <label for="departure">Departure</label>
+        <input id="departure" name="departure" type="date">
+      </div>
+
+      <div class="field">
+        <label for="guests">Guests</label>
+        <select id="guests" name="guests">
+          <option value="1">1 Guest</option>
+          <option value="2" selected>2 Guests</option>
+          <option value="3">3 Guests</option>
+          <option value="4">4 Guests</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="rooms">Rooms</label>
+        <select id="rooms" name="rooms">
+          <option value="1" selected>1 Room</option>
+          <option value="2">2 Rooms</option>
+          <option value="3">3 Rooms</option>
+        </select>
+      </div>
+
+      <button class="button button-gold" type="submit">
+        Request Availability
+      </button>
+    </form>
+
+    <section class="section section-white">
+      <div class="container arrival-layout">
+        <div
+          class="arrival-image"
+          role="img"
+          aria-label="Luxury resort entrance and lobby"
+        ></div>
+
+        <div class="arrival-copy">
+          <span class="section-label">Welcome to the resort</span>
+
+          <h2>A destination designed from arrival to departure</h2>
+
+          <p>
+            The resort brings accommodation, dining, entertainment, casino
+            leisure and relaxation together in a setting created for weekend
+            escapes, celebrations and memorable evenings.
+          </p>
+
+          <p>
+            Spacious rooms provide a comfortable place to unwind, while
+            restaurants, cocktail lounges, event spaces and leisure facilities
+            give guests more ways to enjoy every part of the stay.
+          </p>
+
+          <ul class="signature-list">
+            <li>Contemporary guest rooms</li>
+            <li>Spacious signature suites</li>
+            <li>Restaurants and cocktail bars</li>
+            <li>Adult casino entertainment</li>
+            <li>Pool and leisure areas</li>
+            <li>Private event spaces</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-ivory" id="rooms">
+      <div class="container">
+        <div class="heading center">
+          <span class="section-label">Rooms and suites</span>
+
+          <h2>Your private space within the resort</h2>
+
+          <p>
+            Choose from comfortable guest rooms and spacious suites designed
+            for short stays, special occasions and extended resort visits.
+          </p>
+        </div>
+
+        <div class="rooms-grid">
+          <article class="room-main">
+            <div class="room-main-copy">
+              <small>Signature accommodation</small>
+              <h3>Resort Suite</h3>
+
+              <p>
+                Separate living and sleeping areas, generous proportions and
+                refined details create a more complete stay for special
+                occasions and longer visits.
+              </p>
+            </div>
+          </article>
+
+          <div class="room-side">
+            <article class="room-card">
+              <div class="room-card-image"></div>
+
+              <div class="room-card-copy">
+                <small>Classic accommodation</small>
+                <h3>Deluxe Room</h3>
+
+                <p>
+                  A comfortable room with modern amenities, calm interiors and
+                  flexible sleeping arrangements.
+                </p>
+              </div>
+            </article>
+
+            <article class="room-card">
+              <div class="room-card-image"></div>
+
+              <div class="room-card-copy">
+                <small>Upgraded accommodation</small>
+                <h3>Executive Room</h3>
+
+                <p>
+                  Additional space, upgraded finishes and a relaxing seating
+                  area for a more elevated stay.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-black" id="casino">
+      <div class="container casino-layout">
+        <div class="casino-copy">
+          <div class="eyebrow">
+            Casino entertainment
+          </div>
+
+          <h2>A sophisticated setting after dark</h2>
+
+          <p>
+            The casino is part of the wider resort experience, offering a
+            carefully designed environment for eligible adult guests seeking
+            evening entertainment.
+          </p>
+
+          <p>
+            Access remains subject to legal age requirements, valid
+            identification, local regulations, operating hours and property
+            policies. Casino activity should always remain controlled leisure.
+          </p>
+
+          <div class="casino-stats">
+            <div class="casino-stat">
+              <strong>Table games</strong>
+              <span>
+                Availability may vary according to opening hours and operating
+                schedules.
+              </span>
+            </div>
+
+            <div class="casino-stat">
+              <strong>Gaming machines</strong>
+              <span>
+                Contemporary entertainment options for eligible adult guests.
+              </span>
+            </div>
+
+            <div class="casino-stat">
+              <strong>Evening atmosphere</strong>
+              <span>
+                Casino spaces connected with lounges, dining and resort
+                nightlife.
+              </span>
+            </div>
+
+            <div class="casino-stat">
+              <strong>Responsible play</strong>
+              <span>
+                Set personal time and spending limits before participating.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="casino-image"
+          role="img"
+          aria-label="Casino entertainment floor"
+        ></div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="dining">
+      <div class="container">
+        <div class="heading">
+          <span class="section-label">Dining and nightlife</span>
+
+          <h2>From dinner to the final drink</h2>
+
+          <p>
+            Restaurants, cocktail lounges and social spaces create different
+            experiences throughout the day and into the evening.
+          </p>
+        </div>
+
+        <div class="dining-layout">
+          <article class="dining-card large">
+            <div class="dining-copy">
+              <small>Signature restaurant</small>
+              <h3>Seasonal dining</h3>
+
+              <p>
+                Carefully prepared menus and attentive service in an elegant
+                setting for dinners and special occasions.
+              </p>
+            </div>
+          </article>
+
+          <article class="dining-card lounge">
+            <div class="dining-copy">
+              <small>Cocktail lounge</small>
+              <h3>Evening drinks</h3>
+
+              <p>
+                A relaxed setting for cocktails, conversation and late-night
+                atmosphere.
+              </p>
+            </div>
+          </article>
+
+          <article class="dining-card casual">
+            <div class="dining-copy">
+              <small>Casual restaurant</small>
+              <h3>All-day favourites</h3>
+
+              <p>
+                Approachable dining options for breakfast, lunch and informal
+                meals.
+              </p>
+            </div>
+          </article>
+
+          <article class="dining-card events" id="events">
+            <div class="dining-copy">
+              <small>Events and celebrations</small>
+              <h3>Spaces for memorable occasions</h3>
+
+              <p>
+                Flexible event rooms can support private dining, celebrations,
+                meetings and organised resort events.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-green" id="leisure">
+      <div class="container pool-layout">
+        <div
+          class="pool-image"
+          role="img"
+          aria-label="Luxury resort swimming pool"
+        ></div>
+
+        <div class="pool-copy">
+          <div class="eyebrow">
+            Pool and leisure
+          </div>
+
+          <h2>A slower pace during the day</h2>
+
+          <p>
+            Leisure spaces offer guests a quieter side of the resort, with
+            areas designed for relaxation, social time and time away from the
+            energy of the evening.
+          </p>
+
+          <p>
+            Pool access, wellness facilities, operating hours and seasonal
+            services should be confirmed directly with the resort before the
+            stay.
+          </p>
+
+          <a class="button button-outline" href="#contact">
+            Ask About Facilities
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-ivory">
+      <div class="container">
+        <div class="heading center">
+          <span class="section-label">Resort services</span>
+
+          <h2>Everything within reach</h2>
+        </div>
+
+        <div class="amenities-grid">
+          <article class="amenity">
+            <div class="amenity-number">01</div>
+            <h3>Guest reception</h3>
+            <p>
+              Arrival assistance, resort information and support throughout
+              the stay.
+            </p>
+          </article>
+
+          <article class="amenity">
+            <div class="amenity-number">02</div>
+            <h3>Restaurants</h3>
+            <p>
+              Dining concepts for breakfast, relaxed meals and special
+              evenings.
+            </p>
+          </article>
+
+          <article class="amenity">
+            <div class="amenity-number">03</div>
+            <h3>Casino</h3>
+            <p>
+              Regulated entertainment intended only for eligible adult guests.
+            </p>
+          </article>
+
+          <article class="amenity">
+            <div class="amenity-number">04</div>
+            <h3>Pool and leisure</h3>
+            <p>
+              Relaxed resort spaces designed to complement the overall stay.
+            </p>
+          </article>
+
+          <article class="amenity">
+            <div class="amenity-number">05</div>
+            <h3>Event rooms</h3>
+            <p>
+              Flexible spaces for meetings, celebrations and private
+              gatherings.
+            </p>
+          </article>
+
+          <article class="amenity">
+            <div class="amenity-number">06</div>
+            <h3>Accessibility</h3>
+            <p>
+              Individual accessibility requirements should be confirmed before
+              arrival.
+            </p>
+          </article>
+
+          <article class="amenity">
+            <div class="amenity-number">07</div>
+            <h3>Parking</h3>
+            <p>
+              Parking availability and transport information should be
+              verified with the resort.
+            </p>
+          </article>
+
+          <article class="amenity">
+            <div class="amenity-number">08</div>
+            <h3>Guest assistance</h3>
+            <p>
+              Information about current services, schedules and resort
+              policies.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="contact">
+      <div class="container contact-layout">
+        <div class="contact-copy">
+          <span class="section-label">Contact the resort</span>
+
+          <h2>Start planning your stay</h2>
+
+          <p>
+            Use this section for accommodation, dining, event, casino access
+            and general guest enquiries.
+          </p>
+
+          <p>
+            Add only verified contact details, availability information,
+            prices, terms and property policies belonging to the actual resort.
+          </p>
+
+          <div class="contact-note">
+            Demonstration form only. It does not send a message or create a
+            confirmed reservation.
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="firstName">First name</label>
+
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                autocomplete="given-name"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                autocomplete="family-name"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email address</label>
+
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="enquiryType">Enquiry type</label>
+
+              <select id="enquiryType" name="enquiryType">
+                <option>Accommodation</option>
+                <option>Dining</option>
+                <option>Events</option>
+                <option>Casino information</option>
+                <option>General information</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label for="message">Message</label>
+
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Enter your question..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group full">
+              <button class="button button-gold" type="submit">
+                Submit Demo Enquiry
+              </button>
+
+              <div
+                class="form-message"
+                id="formMessage"
+                aria-live="polite"
+              ></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="responsible">
+      <div class="responsible-inner">
+        <div class="responsible-mark">18+</div>
+
+        <div>
+          <h2>Responsible casino entertainment</h2>
+
+          <p>
+            Casino facilities are intended only for eligible adults and remain
+            subject to local law, identification checks, operating hours and
+            property rules. Casino activity should be treated as
+            entertainment, not as a source of income. Set personal time and
+            spending limits, never chase losses and seek appropriate support
+            if gambling stops feeling controlled.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
-    <div class="footer-inner">
-      <div>Casino Hotel Travel Notebook</div>
-      <div>Informational content only | 18+ where applicable | Terms may apply | Play responsibly</div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>The Resort &amp; Casino</h3>
+
+        <p>
+          A fictional resort website concept featuring accommodation, dining,
+          nightlife, leisure, events and adult casino entertainment. Replace
+          all placeholders with accurate property information before use.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Stay</h4>
+        <a href="#rooms">Rooms</a>
+        <a href="#rooms">Suites</a>
+        <a href="#contact">Availability</a>
+        <a href="#contact">Guest enquiries</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Experience</h4>
+        <a href="#casino">Casino</a>
+        <a href="#dining">Dining</a>
+        <a href="#leisure">Leisure</a>
+        <a href="#events">Events</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Property details</h4>
+        <span>Verified address required</span>
+        <span>Verified telephone required</span>
+        <span>Verified email required</span>
+        <span>Official policies required</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>Fictional property concept. No real resort is represented.</span>
+      <span>18+ where applicable · Terms apply · Play responsibly</span>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const menuButton = document.getElementById("menuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+      const reservationForm =
+        document.getElementById("reservationForm");
+      const contactForm = document.getElementById("contactForm");
+      const formMessage = document.getElementById("formMessage");
+      const arrivalInput = document.getElementById("arrival");
+      const departureInput = document.getElementById("departure");
+
+      function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+
+        return year + "-" + month + "-" + day;
+      }
+
+      function setDefaultDates() {
+        const today = new Date();
+        const arrival = new Date(today);
+        const departure = new Date(today);
+
+        arrival.setDate(today.getDate() + 7);
+        departure.setDate(today.getDate() + 9);
+
+        arrivalInput.min = formatDate(today);
+        departureInput.min = formatDate(today);
+        arrivalInput.value = formatDate(arrival);
+        departureInput.value = formatDate(departure);
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.remove("open");
+        document.body.classList.remove("menu-open");
+        menuButton.setAttribute("aria-expanded", "false");
+      }
+
+      menuButton.addEventListener("click", function () {
+        const isOpen = mobileMenu.classList.toggle("open");
+
+        document.body.classList.toggle("menu-open", isOpen);
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          isOpen ? "true" : "false"
+        );
+      });
+
+      mobileLinks.forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+      });
+
+      arrivalInput.addEventListener("change", function () {
+        if (!arrivalInput.value) {
+          return;
+        }
+
+        departureInput.min = arrivalInput.value;
+
+        if (
+          departureInput.value &&
+          departureInput.value <= arrivalInput.value
+        ) {
+          const nextDay = new Date(
+            arrivalInput.value + "T12:00:00"
+          );
+
+          nextDay.setDate(nextDay.getDate() + 1);
+          departureInput.value = formatDate(nextDay);
+        }
+      });
+
+      reservationForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        document
+          .getElementById("contact")
+          .scrollIntoView({ behavior: "smooth" });
+
+        formMessage.textContent =
+          "This demonstration is not connected to a reservation system.";
+      });
+
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        formMessage.textContent =
+          "Demo enquiry recorded locally only. No message has been sent.";
+
+        contactForm.reset();
+      });
+
+      setDefaultDates();
+    })();
+  </script>
 </body>
 </html>
